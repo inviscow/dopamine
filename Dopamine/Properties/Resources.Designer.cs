@@ -93,6 +93,36 @@ namespace Dopamine.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap folder_48px_dark {
+            get {
+                object obj = ResourceManager.GetObject("folder_48px_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap knife_48px {
+            get {
+                object obj = ResourceManager.GetObject("knife_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mc_48x_dark {
+            get {
+                object obj = ResourceManager.GetObject("mc-48x-dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mc_green {
             get {
                 object obj = ResourceManager.GetObject("mc-green", resourceCulture);
@@ -116,6 +146,16 @@ namespace Dopamine.Properties {
         internal static System.Drawing.Bitmap mc_yellw {
             get {
                 object obj = ResourceManager.GetObject("mc-yellw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shuffle_48px {
+            get {
+                object obj = ResourceManager.GetObject("shuffle_48px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Dopamine.Utils;
 
 namespace Dopamine.Tabs
 {
@@ -15,6 +7,20 @@ namespace Dopamine.Tabs
         public SpoofTab()
         {
             InitializeComponent();
+        }
+
+        private void SetLabel(Guna.UI2.WinForms.Guna2HtmlLabel label, string text)
+        {
+            label.Text = text;
+        }
+
+        private async void SpoofTab_Load(object sender, EventArgs e)
+        {
+            SetLabel(DidLabel, $"DID: <b>{await Minecraft.GetDIDFromFile()}</b>");
+            SetLabel(McidLabel, $"MCID: <b>N/A</b>");
+            SetLabel(CidLabel, $"CID: <b>{await Minecraft.GetCIDFromFile()}</b>");
+            var (err, mpUser) = await Minecraft.GetDataFromOptionsFile("mp_username");
+            SetLabel(MpUsernameLabel, $"MP_Username: <b>{(err ? mpUser : "N/A")}</b>");
         }
     }
 }
