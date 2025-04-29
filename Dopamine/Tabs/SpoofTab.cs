@@ -21,6 +21,7 @@ namespace Dopamine.Tabs
             SetLabel(CidLabel, $"CID: <b>{await Minecraft.GetCIDFromFile()}</b>");
             var (err, mpUser) = await Minecraft.GetDataFromOptionsFile("mp_username");
             SetLabel(MpUsernameLabel, $"MP_Username: <b>{(err ? mpUser : "N/A")}</b>");
+            SetLabel(McVersionLabel, $"MC Version: <b>{Minecraft.GetMCVersion()}</b>");
         }
     }
 }

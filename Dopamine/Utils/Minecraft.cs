@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Text.Json;
 
 namespace Dopamine.Utils
 {
@@ -75,6 +76,28 @@ namespace Dopamine.Utils
             {
                 return 0;
             }
+        }
+
+        internal static string GetMCVersion()
+        {
+            string telemetryFile = Path.Combine(McpeDirectory, "telemetry_info.json");
+            if (!File.Exists(telemetryFile))
+                return "N/A";
+
+            try
+            {
+                using var doc = JsonDocument.Parse(File.ReadAllText(telemetryFile));
+                var root = doc.RootElement;
+
+                if (root.TryGetProperty("lastsession_Build", out JsonElement buildElem))
+                    return buildElem.GetString() ?? "N/A";
+            }
+            catch (Exception ex)
+            {
+                return "N/A - " + ex.Message;
+            }
+
+            return "N/A";
         }
     }
 }

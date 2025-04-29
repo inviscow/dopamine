@@ -35,6 +35,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             SpoofPanel = new Guna.UI2.WinForms.Guna2Panel();
+            McVersionLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             Separator = new Guna.UI2.WinForms.Guna2Separator();
             MpUsernameLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             CidLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -42,7 +43,6 @@
             DidLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             InjectBtn = new Guna.UI2.WinForms.Guna2Button();
             CustomDidBox = new Guna.UI2.WinForms.Guna2TextBox();
-            McVersionLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             SpoofPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -68,6 +68,16 @@
             SpoofPanel.ShadowDecoration.CustomizableEdges = customizableEdges6;
             SpoofPanel.Size = new Size(440, 300);
             SpoofPanel.TabIndex = 2;
+            // 
+            // McVersionLabel
+            // 
+            McVersionLabel.BackColor = Color.Transparent;
+            McVersionLabel.ForeColor = Color.WhiteSmoke;
+            McVersionLabel.Location = new Point(20, 170);
+            McVersionLabel.Name = "McVersionLabel";
+            McVersionLabel.Size = new Size(122, 17);
+            McVersionLabel.TabIndex = 8;
+            McVersionLabel.Text = "MC Version: <b>Loading...</b>";
             // 
             // Separator
             // 
@@ -151,10 +161,10 @@
             CustomDidBox.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             CustomDidBox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             CustomDidBox.FillColor = Color.FromArgb(25, 25, 25);
-            CustomDidBox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            CustomDidBox.FocusedState.BorderColor = Color.FromArgb(20, 20, 20);
             CustomDidBox.Font = new Font("Segoe UI", 9F);
             CustomDidBox.ForeColor = Color.WhiteSmoke;
-            CustomDidBox.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            CustomDidBox.HoverState.BorderColor = Color.FromArgb(20, 20, 20);
             CustomDidBox.Location = new Point(20, 20);
             CustomDidBox.Name = "CustomDidBox";
             CustomDidBox.PlaceholderText = "Custom DID (Leave blank for random)";
@@ -162,16 +172,6 @@
             CustomDidBox.ShadowDecoration.CustomizableEdges = customizableEdges4;
             CustomDidBox.Size = new Size(318, 36);
             CustomDidBox.TabIndex = 0;
-            // 
-            // McVersionLabel
-            // 
-            McVersionLabel.BackColor = Color.Transparent;
-            McVersionLabel.ForeColor = Color.WhiteSmoke;
-            McVersionLabel.Location = new Point(20, 170);
-            McVersionLabel.Name = "McVersionLabel";
-            McVersionLabel.Size = new Size(122, 17);
-            McVersionLabel.TabIndex = 8;
-            McVersionLabel.Text = "MC Version: <b>Loading...</b>";
             // 
             // SpoofTab
             // 
