@@ -33,6 +33,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -43,13 +47,11 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             ModifyForm = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             CategoryPanel = new Guna.UI2.WinForms.Guna2Panel();
             TabsPanel = new Guna.UI2.WinForms.Guna2Panel();
+            OpenMcDirectoryBtn = new Guna.UI2.WinForms.Guna2Button();
+            OpenAppDirectoryBtn = new Guna.UI2.WinForms.Guna2Button();
             SpooferBtn = new Guna.UI2.WinForms.Guna2Button();
             InjectorBtn = new Guna.UI2.WinForms.Guna2Button();
             Separator = new Guna.UI2.WinForms.Guna2Separator();
@@ -62,8 +64,6 @@
             DragLogo = new Guna.UI2.WinForms.Guna2DragControl(components);
             DragWatermark = new Guna.UI2.WinForms.Guna2DragControl(components);
             DragTabsPanel = new Guna.UI2.WinForms.Guna2DragControl(components);
-            OpenAppDirectoryBtn = new Guna.UI2.WinForms.Guna2Button();
-            OpenMcDirectoryBtn = new Guna.UI2.WinForms.Guna2Button();
             CategoryPanel.SuspendLayout();
             TabsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Logo).BeginInit();
@@ -72,7 +72,6 @@
             // ModifyForm
             // 
             ModifyForm.AnimateWindow = true;
-            ModifyForm.AnimationType = Guna.UI2.WinForms.Guna2BorderlessForm.AnimateWindowType.AW_CENTER;
             ModifyForm.BorderRadius = 6;
             ModifyForm.ContainerControl = this;
             ModifyForm.DockIndicatorTransparencyValue = 0.6D;
@@ -114,6 +113,48 @@
             TabsPanel.ShadowDecoration.CustomizableEdges = customizableEdges10;
             TabsPanel.Size = new Size(122, 315);
             TabsPanel.TabIndex = 6;
+            // 
+            // OpenMcDirectoryBtn
+            // 
+            OpenMcDirectoryBtn.Animated = true;
+            OpenMcDirectoryBtn.BorderColor = Color.FromArgb(20, 20, 20);
+            OpenMcDirectoryBtn.BorderRadius = 6;
+            OpenMcDirectoryBtn.CustomizableEdges = customizableEdges1;
+            OpenMcDirectoryBtn.DisabledState.BorderColor = Color.DarkGray;
+            OpenMcDirectoryBtn.DisabledState.CustomBorderColor = Color.DarkGray;
+            OpenMcDirectoryBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            OpenMcDirectoryBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            OpenMcDirectoryBtn.FillColor = Color.Transparent;
+            OpenMcDirectoryBtn.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            OpenMcDirectoryBtn.ForeColor = Color.WhiteSmoke;
+            OpenMcDirectoryBtn.Image = Properties.Resources.mc_48x_dark;
+            OpenMcDirectoryBtn.Location = new Point(64, 286);
+            OpenMcDirectoryBtn.Name = "OpenMcDirectoryBtn";
+            OpenMcDirectoryBtn.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            OpenMcDirectoryBtn.Size = new Size(26, 26);
+            OpenMcDirectoryBtn.TabIndex = 5;
+            OpenMcDirectoryBtn.Click += OpenMcDirectoryBtn_Click;
+            // 
+            // OpenAppDirectoryBtn
+            // 
+            OpenAppDirectoryBtn.Animated = true;
+            OpenAppDirectoryBtn.BorderColor = Color.FromArgb(20, 20, 20);
+            OpenAppDirectoryBtn.BorderRadius = 6;
+            OpenAppDirectoryBtn.CustomizableEdges = customizableEdges3;
+            OpenAppDirectoryBtn.DisabledState.BorderColor = Color.DarkGray;
+            OpenAppDirectoryBtn.DisabledState.CustomBorderColor = Color.DarkGray;
+            OpenAppDirectoryBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            OpenAppDirectoryBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            OpenAppDirectoryBtn.FillColor = Color.Transparent;
+            OpenAppDirectoryBtn.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            OpenAppDirectoryBtn.ForeColor = Color.WhiteSmoke;
+            OpenAppDirectoryBtn.Image = Properties.Resources.folder_48px_dark;
+            OpenAppDirectoryBtn.Location = new Point(32, 286);
+            OpenAppDirectoryBtn.Name = "OpenAppDirectoryBtn";
+            OpenAppDirectoryBtn.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            OpenAppDirectoryBtn.Size = new Size(26, 26);
+            OpenAppDirectoryBtn.TabIndex = 4;
+            OpenAppDirectoryBtn.Click += OpenAppDirectoryBtn_Click;
             // 
             // SpooferBtn
             // 
@@ -279,48 +320,6 @@
             DragTabsPanel.DockIndicatorTransparencyValue = 0.6D;
             DragTabsPanel.TargetControl = TabsPanel;
             DragTabsPanel.UseTransparentDrag = true;
-            // 
-            // OpenAppDirectoryBtn
-            // 
-            OpenAppDirectoryBtn.Animated = true;
-            OpenAppDirectoryBtn.BorderColor = Color.FromArgb(20, 20, 20);
-            OpenAppDirectoryBtn.BorderRadius = 6;
-            OpenAppDirectoryBtn.CustomizableEdges = customizableEdges3;
-            OpenAppDirectoryBtn.DisabledState.BorderColor = Color.DarkGray;
-            OpenAppDirectoryBtn.DisabledState.CustomBorderColor = Color.DarkGray;
-            OpenAppDirectoryBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            OpenAppDirectoryBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            OpenAppDirectoryBtn.FillColor = Color.Transparent;
-            OpenAppDirectoryBtn.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            OpenAppDirectoryBtn.ForeColor = Color.WhiteSmoke;
-            OpenAppDirectoryBtn.Image = Properties.Resources.folder_48px_dark;
-            OpenAppDirectoryBtn.Location = new Point(32, 286);
-            OpenAppDirectoryBtn.Name = "OpenAppDirectoryBtn";
-            OpenAppDirectoryBtn.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            OpenAppDirectoryBtn.Size = new Size(26, 26);
-            OpenAppDirectoryBtn.TabIndex = 4;
-            OpenAppDirectoryBtn.Click += OpenAppDirectoryBtn_Click;
-            // 
-            // OpenMcDirectoryBtn
-            // 
-            OpenMcDirectoryBtn.Animated = true;
-            OpenMcDirectoryBtn.BorderColor = Color.FromArgb(20, 20, 20);
-            OpenMcDirectoryBtn.BorderRadius = 6;
-            OpenMcDirectoryBtn.CustomizableEdges = customizableEdges1;
-            OpenMcDirectoryBtn.DisabledState.BorderColor = Color.DarkGray;
-            OpenMcDirectoryBtn.DisabledState.CustomBorderColor = Color.DarkGray;
-            OpenMcDirectoryBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            OpenMcDirectoryBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            OpenMcDirectoryBtn.FillColor = Color.Transparent;
-            OpenMcDirectoryBtn.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            OpenMcDirectoryBtn.ForeColor = Color.WhiteSmoke;
-            OpenMcDirectoryBtn.Image = Properties.Resources.mc_48x_dark;
-            OpenMcDirectoryBtn.Location = new Point(64, 286);
-            OpenMcDirectoryBtn.Name = "OpenMcDirectoryBtn";
-            OpenMcDirectoryBtn.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            OpenMcDirectoryBtn.Size = new Size(26, 26);
-            OpenMcDirectoryBtn.TabIndex = 5;
-            OpenMcDirectoryBtn.Click += OpenMcDirectoryBtn_Click;
             // 
             // Panel
             // 

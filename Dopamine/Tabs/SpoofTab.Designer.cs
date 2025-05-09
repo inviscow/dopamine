@@ -36,13 +36,15 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             SpoofPanel = new Guna.UI2.WinForms.Guna2Panel();
             McVersionLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            Separator = new Guna.UI2.WinForms.Guna2Separator();
+            SeparatorTop = new Guna.UI2.WinForms.Guna2Separator();
             MpUsernameLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             CidLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             McidLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             DidLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             InjectBtn = new Guna.UI2.WinForms.Guna2Button();
             CustomDidBox = new Guna.UI2.WinForms.Guna2TextBox();
+            SeparatorBottom = new Guna.UI2.WinForms.Guna2Separator();
+            StatusLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             SpoofPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,8 +54,10 @@
             SpoofPanel.BorderColor = Color.FromArgb(25, 25, 25);
             SpoofPanel.BorderRadius = 6;
             SpoofPanel.BorderThickness = 1;
+            SpoofPanel.Controls.Add(StatusLabel);
+            SpoofPanel.Controls.Add(SeparatorBottom);
             SpoofPanel.Controls.Add(McVersionLabel);
-            SpoofPanel.Controls.Add(Separator);
+            SpoofPanel.Controls.Add(SeparatorTop);
             SpoofPanel.Controls.Add(MpUsernameLabel);
             SpoofPanel.Controls.Add(CidLabel);
             SpoofPanel.Controls.Add(McidLabel);
@@ -62,11 +66,11 @@
             SpoofPanel.Controls.Add(CustomDidBox);
             SpoofPanel.CustomizableEdges = customizableEdges5;
             SpoofPanel.FillColor = Color.FromArgb(15, 15, 15);
-            SpoofPanel.Location = new Point(116, 75);
+            SpoofPanel.Location = new Point(116, 103);
             SpoofPanel.Name = "SpoofPanel";
             SpoofPanel.ShadowDecoration.Color = Color.MediumPurple;
             SpoofPanel.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            SpoofPanel.Size = new Size(440, 300);
+            SpoofPanel.Size = new Size(440, 244);
             SpoofPanel.TabIndex = 2;
             // 
             // McVersionLabel
@@ -79,13 +83,13 @@
             McVersionLabel.TabIndex = 8;
             McVersionLabel.Text = "MC Version: <b>Loading...</b>";
             // 
-            // Separator
+            // SeparatorTop
             // 
-            Separator.FillColor = Color.FromArgb(40, 40, 40);
-            Separator.Location = new Point(20, 62);
-            Separator.Name = "Separator";
-            Separator.Size = new Size(400, 10);
-            Separator.TabIndex = 7;
+            SeparatorTop.FillColor = Color.FromArgb(40, 40, 40);
+            SeparatorTop.Location = new Point(20, 62);
+            SeparatorTop.Name = "SeparatorTop";
+            SeparatorTop.Size = new Size(400, 10);
+            SeparatorTop.TabIndex = 7;
             // 
             // MpUsernameLabel
             // 
@@ -148,6 +152,7 @@
             InjectBtn.Size = new Size(76, 36);
             InjectBtn.TabIndex = 2;
             InjectBtn.Text = "Spoof";
+            InjectBtn.Click += InjectBtn_Click;
             // 
             // CustomDidBox
             // 
@@ -173,6 +178,24 @@
             CustomDidBox.Size = new Size(318, 36);
             CustomDidBox.TabIndex = 0;
             // 
+            // SeparatorBottom
+            // 
+            SeparatorBottom.FillColor = Color.FromArgb(40, 40, 40);
+            SeparatorBottom.Location = new Point(20, 193);
+            SeparatorBottom.Name = "SeparatorBottom";
+            SeparatorBottom.Size = new Size(400, 10);
+            SeparatorBottom.TabIndex = 9;
+            // 
+            // StatusLabel
+            // 
+            StatusLabel.BackColor = Color.Transparent;
+            StatusLabel.ForeColor = Color.WhiteSmoke;
+            StatusLabel.Location = new Point(20, 209);
+            StatusLabel.Name = "StatusLabel";
+            StatusLabel.Size = new Size(93, 17);
+            StatusLabel.TabIndex = 10;
+            StatusLabel.Text = "Status: <b>Waiting...</b>";
+            // 
             // SpoofTab
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -196,7 +219,9 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel MpUsernameLabel;
         private Guna.UI2.WinForms.Guna2HtmlLabel CidLabel;
         private Guna.UI2.WinForms.Guna2HtmlLabel McidLabel;
-        private Guna.UI2.WinForms.Guna2Separator Separator;
+        private Guna.UI2.WinForms.Guna2Separator SeparatorTop;
         private Guna.UI2.WinForms.Guna2HtmlLabel McVersionLabel;
+        private Guna.UI2.WinForms.Guna2Separator SeparatorBottom;
+        private Guna.UI2.WinForms.Guna2HtmlLabel StatusLabel;
     }
 }

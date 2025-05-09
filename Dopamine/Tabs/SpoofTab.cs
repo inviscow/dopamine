@@ -23,5 +23,12 @@ namespace Dopamine.Tabs
             SetLabel(MpUsernameLabel, $"MP_Username: <b>{(err ? mpUser : "N/A")}</b>");
             SetLabel(McVersionLabel, $"MC Version: <b>{Minecraft.GetMCVersion()}</b>");
         }
+
+        private async void InjectBtn_Click(object sender, EventArgs e)
+        {
+            StatusLabel.Text = "Status: <b>Randomizing data...</b>";
+            var (err, resp) = await Handlers.Spoof.RandomizeData();
+            StatusLabel.Text = $"Status: <b>{(err ? "Complete! Waiting..." : "An error has occurred. " + resp)}</b>";
+        }
     }
 }
