@@ -9,14 +9,12 @@ namespace Dopamine.Tabs
             InitializeComponent();
         }
 
-        private void SetLabel(Guna.UI2.WinForms.Guna2HtmlLabel label, string text)
-        {
+        private void SetLabel(Guna.UI2.WinForms.Guna2HtmlLabel label, string text) =>
             label.Text = text;
-        }
 
         private async void SpoofTab_Load(object sender, EventArgs e)
         {
-            SetLabel(DidLabel, $"DID: <b>{await Minecraft.GetDIDFromFile()}</b>");
+            SetLabel(DidLabel, $"Original DID: <b>{await Minecraft.GetDIDFromFile()}</b>");
             SetLabel(McidLabel, $"MCID: <b>N/A</b>");
             SetLabel(CidLabel, $"CID: <b>{await Minecraft.GetCIDFromFile()}</b>");
             var (err, mpUser) = await Minecraft.GetDataFromOptionsFile("mp_username");
@@ -28,9 +26,10 @@ namespace Dopamine.Tabs
         {
             StatusLabel.Text = "Status: <b>Randomizing data...</b>";
             var (err, resp) = await Handlers.Spoof.RandomizeData();
-            StatusLabel.Text = $"Status: <b>{(err ? "Complete! Spoofing DID..." : "An error has occurred. " + resp)}</b>";
-            var (err2, resp2) = await Handlers.Spoof.SpoofDID();
-            StatusLabel.Text = $"Status: <b>{(err2 ? "Complete!" : "An error has occurred. " + resp2)}</b>";
+            StatusLabel.Text = $"Status: <b>{(err ? "Spoofing DID..." : "An error has occurred. " + resp)}</b>";
+            var (err2, didSpoofResp) = await Handlers.Spoof.SpoofDID();
+            StatusLabel.Text = $"Status: <b>{(err2 ? "Complete! Waiting..." : "An error has occurred. " + didSpoofResp)}</b>";
+            SetLabel(DidLabel, $"Spoofed DID: <b>{didSpoofResp}</b>");
         }
     }
 }

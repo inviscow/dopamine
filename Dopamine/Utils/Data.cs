@@ -73,18 +73,10 @@ namespace Dopamine.Utils
             ConfigDirectory = chosenDir;
             string cfgPath = Path.Combine(chosenDir, "config.json");
             if (!File.Exists(cfgPath))
-            {
-                var defaults = new
-                {
-                    SettinPathToDataDirectory = chosenDir,
-                    LastKnownProcessID = 0
-                };
-
-                var json = JsonSerializer.Serialize(defaults, new JsonSerializerOptions { WriteIndented = true });
-                await File.WriteAllTextAsync(cfgPath, json);
-            }
+                File.Create(cfgPath).Close();
 
             ConfigPath = cfgPath;
+            GetConfig().SetNumber("Minecraft", "Process", "Pointers", 0);
         }
     }
 }
