@@ -7,7 +7,6 @@ namespace Dopamine.Utils
     {
         internal readonly static string McpeDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", "Microsoft.MinecraftUWP_8wekyb3d8bbwe", "LocalState", "games", "com.mojang", "minecraftpe"); // lol
         internal readonly static string OptionsFile = Path.Combine(McpeDirectory, "options.txt");
-        private static int LastKnownProcessID = 0;
 
         private static async Task<string> GetValueFromFile(string fileName, int line = 0)
         {
@@ -65,7 +64,6 @@ namespace Dopamine.Utils
                 if (targetProcessIndex.Length > 0)
                 {
                     Process targetProcess = Process.GetProcessesByName("Minecraft.Windows")[0];
-                    LastKnownProcessID = targetProcess.Id;
                     return targetProcess.Id;
                 } else
                 {

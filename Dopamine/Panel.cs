@@ -47,7 +47,20 @@ namespace Dopamine
 
         private void OpenAppDirectoryBtn_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                var psi = new ProcessStartInfo
+                {
+                    FileName = "explorer.exe",
+                    Arguments = $"\"{Data.ConfigDirectory}\"",
+                    UseShellExecute = true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: \n" + ex.Message);
+            }
         }
 
         private void OpenMcDirectoryBtn_Click(object sender, EventArgs e)

@@ -1,4 +1,6 @@
 ﻿using Dopamine.Utils;
+using DotNetConfig;
+using static Dopamine.Utils.Data;
 
 namespace Dopamine.Handlers
 {
@@ -6,7 +8,7 @@ namespace Dopamine.Handlers
     {
         internal static async Task<(bool success, string msg)> RandomizeData()
         {
-            return await Task.Run<(bool succ, string resp)>(() => {
+            return await Task.Run(() => {
                 try
                 {
                     string cidPath = Path.Combine(Minecraft.McpeDirectory, "clientId.txt");
@@ -58,6 +60,31 @@ namespace Dopamine.Handlers
                         return (true, "Spoofed");
                     }
                 } catch (Exception ex)
+                {
+                    return (false, ex.Message);
+                }
+            });
+        }
+
+        internal static async Task<(bool success, string msg)> SpoofDID()
+        {
+            return await Task.Run<(bool succ, string resp)>(() => {
+                try
+                {
+                    Config config = GetConfig();
+
+                    int CurrentProcessId = 0;
+                    CurrentProcessId = Minecraft.GetProcessID();
+
+                    if (CurrentProcessId == 0)
+                        return (false, "Minecraft is not open");
+
+                    if (CurrentProcessId != config.GetNumber("Minecraft", "Process", "LastKnownProcessID"))
+                        config.SetNumber("Minecraft", "Process", "LastKnownProcessID", CurrentProcessId);
+
+                    return (true, "Success");
+                }
+                catch (Exception ex)
                 {
                     return (false, ex.Message);
                 }
