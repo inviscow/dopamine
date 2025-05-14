@@ -1,22 +1,14 @@
 ﻿using DotNetConfig;
-using System.Text.Json;
 
 namespace Dopamine.Utils
 {
     internal class Data
     {
-        internal interface ClientConfigStruct
-        {
-            string PathToDataDirectory { get; }
-
-            int LastKnownProcessID { get; set; }
-        }
-
         internal static Task? ConfigSetupTask { get; set; }
         internal static string ConfigPath = "";
         internal static string ConfigDirectory = "";
 
-
+        #region General Functions
         internal static string RandomString(int length = 16, bool alphabet = true, bool numbers = false)
         {
             string chars = "";
@@ -34,7 +26,10 @@ namespace Dopamine.Utils
             Random rnd = new Random();
             return rnd.Next(min, max);
         }
+        #endregion
 
+
+        #region Config
         internal static Config GetConfig()
         {
             /*
@@ -78,5 +73,6 @@ namespace Dopamine.Utils
             ConfigPath = cfgPath;
             GetConfig().SetNumber("Minecraft", "Process", "Pointers", 0);
         }
+        #endregion
     }
 }

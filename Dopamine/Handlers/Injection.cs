@@ -1,6 +1,9 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.Win32.SafeHandles;
+using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
+using System.Security.Policy;
 using System.Security.Principal;
 using System.Text;
 
@@ -74,6 +77,37 @@ namespace Dopamine.Handlers
                     {
                         return (false, "Minecraft is not running");
                     }
+                }
+                catch (Exception ex)
+                {
+                    return (false, $"An error has occured: \n{ex.Message}");
+                }
+            });
+        }
+
+        internal static async Task<(bool Success, string Error)> GetAndInjectClient(string clientName)
+        {
+            return await Task.Run(async () =>
+            {
+                try
+                {
+                    switch (clientName)
+                    {
+                        case "Horion":
+                            using (HttpClient client = new HttpClient())
+                            {
+                                var response = await client.GetAsync("https://horion.download/dll", HttpCompletionOption.ResponseHeadersRead);
+                                using (Stream stream = await response.Content.ReadAsStreamAsync())
+                                using (FileStream fileStream = new FileStream(Path.Combine(Utils.Data.ConfigDirectory, "Horion.dll"), FileMode.Create))
+                                {
+                                    await stream.CopyToAsync(fileStream);
+                                }
+                            }
+                            await InjectDLL(Path.Combine(Utils.Data.ConfigDirectory, "Horion.dll"));
+                            return (true, "Injected");
+                    }
+
+                    return (false, "Client not in list");
                 }
                 catch (Exception ex)
                 {

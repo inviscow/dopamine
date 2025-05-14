@@ -1,4 +1,6 @@
-﻿namespace Dopamine.Tabs
+﻿using Dopamine.Handlers;
+
+namespace Dopamine.Tabs
 {
     public partial class InjectorTab : UserControl
     {
@@ -6,18 +8,22 @@
         public InjectorTab()
         {
             InitializeComponent();
+            ClientList.Items.Add("Horion");
+            ClientList.Items.Add("Latite");
+            ClientList.Items.Add("Flarial");
+            ClientList.Items.Add("Orphan");
         }
 
         private async void InjectBtn_Click(object sender, EventArgs e)
         {
             if (!UseCustomDllBox.Checked)
             {
-
+                var (success, response) = await Injection.GetAndInjectClient(ClientList.SelectedItem.ToString());
             } else
             {
                 if (!string.IsNullOrEmpty(pathToCustomDll))
                 {
-                    var (err, dllMsg) = await Handlers.Injection.InjectDLL(pathToCustomDll);
+                    var (err, dllMsg) = await Injection.InjectDLL(pathToCustomDll);
                     MessageBox.Show(dllMsg); 
                 }
             }
