@@ -26,6 +26,19 @@ namespace Dopamine.Utils
             Random rnd = new Random();
             return rnd.Next(min, max);
         }
+
+        internal static async Task DownloadFile(string url, string path)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var response = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
+                using (Stream stream = await response.Content.ReadAsStreamAsync())
+                using (FileStream fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await stream.CopyToAsync(fileStream);
+                }
+            }
+        }
         #endregion
 
 

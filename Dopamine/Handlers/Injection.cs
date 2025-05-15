@@ -80,7 +80,7 @@ namespace Dopamine.Handlers
                 }
                 catch (Exception ex)
                 {
-                    return (false, $"An error has occured: \n{ex.Message}");
+                    return (false, $"ERROR - {ex.Message}");
                 }
             });
         }
@@ -91,27 +91,37 @@ namespace Dopamine.Handlers
             {
                 try
                 {
+                    if (Utils.Minecraft.GetProcessID() == 0)
+                        return (false, "Minecraft is not open");
+
                     switch (clientName)
                     {
                         case "Horion":
-                            using (HttpClient client = new HttpClient())
-                            {
-                                var response = await client.GetAsync("https://horion.download/dll", HttpCompletionOption.ResponseHeadersRead);
-                                using (Stream stream = await response.Content.ReadAsStreamAsync())
-                                using (FileStream fileStream = new FileStream(Path.Combine(Utils.Data.ConfigDirectory, "Horion.dll"), FileMode.Create))
-                                {
-                                    await stream.CopyToAsync(fileStream);
-                                }
-                            }
-                            await InjectDLL(Path.Combine(Utils.Data.ConfigDirectory, "Horion.dll"));
-                            return (true, "Injected");
+                            await Utils.Data.DownloadFile("https://horion.download/dll", Path.Combine(Utils.Data.ConfigDirectory, $"{clientName}.dll"));
+                            await InjectDLL(Path.Combine(Utils.Data.ConfigDirectory, $"{clientName}.dll"));
+                            return (true, $"Injected {clientName}");
+
+                        case "Latite":
+                            await Utils.Data.DownloadFile("https://github.com/Imrglop/Latite-Releases/releases/latest/download/Latite.dll", Path.Combine(Utils.Data.ConfigDirectory, $"{clientName}.dll"));
+                            await InjectDLL(Path.Combine(Utils.Data.ConfigDirectory, $"{clientName}.dll"));
+                            return (true, $"Injected {clientName}");
+
+                        case "Flarial":
+                            await Utils.Data.DownloadFile("https://github.com/flarialmc/newcdn/raw/main/dll/latest.dll", Path.Combine(Utils.Data.ConfigDirectory, $"{clientName}.dll"));
+                            await InjectDLL(Path.Combine(Utils.Data.ConfigDirectory, $"{clientName}.dll"));
+                            return (true, $"Injected {clientName}");
+
+                        case "Onix":
+                            await Utils.Data.DownloadFile("https://github.com/bernarddesfosse/onixclientautoupdate/raw/main/OnixClient.dll", Path.Combine(Utils.Data.ConfigDirectory, $"{clientName}.dll"));
+                            await InjectDLL(Path.Combine(Utils.Data.ConfigDirectory, $"{clientName}.dll"));
+                            return (true, $"Injected {clientName}");
                     }
 
                     return (false, "Client not in list");
                 }
                 catch (Exception ex)
                 {
-                    return (false, $"An error has occured: \n{ex.Message}");
+                    return (false, $"ERROR - {ex.Message}");
                 }
             });
         }

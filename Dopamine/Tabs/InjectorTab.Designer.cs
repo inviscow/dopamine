@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             InjectingPanel = new Guna.UI2.WinForms.Guna2Panel();
+            StatusLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             DllPathLabel = new Label();
             label1 = new Label();
             SelectDllBtn = new Guna.UI2.WinForms.Guna2Button();
@@ -57,27 +58,41 @@
             InjectingPanel.BorderColor = Color.FromArgb(25, 25, 25);
             InjectingPanel.BorderRadius = 6;
             InjectingPanel.BorderThickness = 1;
+            InjectingPanel.Controls.Add(StatusLabel);
             InjectingPanel.Controls.Add(DllPathLabel);
             InjectingPanel.Controls.Add(label1);
             InjectingPanel.Controls.Add(SelectDllBtn);
             InjectingPanel.Controls.Add(ClientLabel);
             InjectingPanel.Controls.Add(InjectBtn);
             InjectingPanel.Controls.Add(ClientList);
-            InjectingPanel.CustomizableEdges = customizableEdges17;
+            InjectingPanel.CustomizableEdges = customizableEdges7;
             InjectingPanel.FillColor = Color.FromArgb(15, 15, 15);
             InjectingPanel.Location = new Point(112, 56);
             InjectingPanel.Name = "InjectingPanel";
             InjectingPanel.ShadowDecoration.Color = Color.MediumPurple;
-            InjectingPanel.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            InjectingPanel.Size = new Size(449, 169);
+            InjectingPanel.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            InjectingPanel.Size = new Size(449, 174);
             InjectingPanel.TabIndex = 0;
+            // 
+            // StatusLabel
+            // 
+            StatusLabel.AutoSize = false;
+            StatusLabel.BackColor = Color.Transparent;
+            StatusLabel.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            StatusLabel.ForeColor = Color.DimGray;
+            StatusLabel.Location = new Point(3, 154);
+            StatusLabel.Name = "StatusLabel";
+            StatusLabel.Size = new Size(443, 17);
+            StatusLabel.TabIndex = 6;
+            StatusLabel.Text = "<b>Status:</b> Waiting...";
+            StatusLabel.TextAlignment = ContentAlignment.MiddleCenter;
             // 
             // DllPathLabel
             // 
             DllPathLabel.AutoSize = true;
             DllPathLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DllPathLabel.ForeColor = Color.Silver;
-            DllPathLabel.Location = new Point(219, 120);
+            DllPathLabel.Location = new Point(219, 114);
             DllPathLabel.Name = "DllPathLabel";
             DllPathLabel.Size = new Size(92, 17);
             DllPathLabel.TabIndex = 5;
@@ -88,7 +103,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             label1.ForeColor = Color.Gray;
-            label1.Location = new Point(113, 90);
+            label1.Location = new Point(113, 84);
             label1.Name = "label1";
             label1.Size = new Size(83, 17);
             label1.TabIndex = 4;
@@ -100,7 +115,7 @@
             SelectDllBtn.BorderColor = Color.FromArgb(20, 20, 20);
             SelectDllBtn.BorderRadius = 6;
             SelectDllBtn.BorderThickness = 1;
-            SelectDllBtn.CustomizableEdges = customizableEdges11;
+            SelectDllBtn.CustomizableEdges = customizableEdges1;
             SelectDllBtn.DisabledState.BorderColor = Color.DarkGray;
             SelectDllBtn.DisabledState.CustomBorderColor = Color.DarkGray;
             SelectDllBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -109,9 +124,9 @@
             SelectDllBtn.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             SelectDllBtn.ForeColor = Color.WhiteSmoke;
             SelectDllBtn.Image = Properties.Resources.folder_48px;
-            SelectDllBtn.Location = new Point(113, 110);
+            SelectDllBtn.Location = new Point(113, 104);
             SelectDllBtn.Name = "SelectDllBtn";
-            SelectDllBtn.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            SelectDllBtn.ShadowDecoration.CustomizableEdges = customizableEdges2;
             SelectDllBtn.Size = new Size(100, 36);
             SelectDllBtn.TabIndex = 3;
             SelectDllBtn.Text = "Select DLL";
@@ -122,7 +137,7 @@
             ClientLabel.AutoSize = true;
             ClientLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             ClientLabel.ForeColor = Color.Gray;
-            ClientLabel.Location = new Point(113, 17);
+            ClientLabel.Location = new Point(113, 11);
             ClientLabel.Name = "ClientLabel";
             ClientLabel.Size = new Size(44, 17);
             ClientLabel.TabIndex = 2;
@@ -134,7 +149,7 @@
             InjectBtn.BorderColor = Color.FromArgb(20, 20, 20);
             InjectBtn.BorderRadius = 6;
             InjectBtn.BorderThickness = 1;
-            InjectBtn.CustomizableEdges = customizableEdges13;
+            InjectBtn.CustomizableEdges = customizableEdges3;
             InjectBtn.DisabledState.BorderColor = Color.DarkGray;
             InjectBtn.DisabledState.CustomBorderColor = Color.DarkGray;
             InjectBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -143,9 +158,9 @@
             InjectBtn.Font = new Font("Segoe UI", 9F);
             InjectBtn.ForeColor = Color.White;
             InjectBtn.Image = Properties.Resources.syringe_48px;
-            InjectBtn.Location = new Point(259, 37);
+            InjectBtn.Location = new Point(259, 31);
             InjectBtn.Name = "InjectBtn";
-            InjectBtn.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            InjectBtn.ShadowDecoration.CustomizableEdges = customizableEdges4;
             InjectBtn.Size = new Size(76, 36);
             InjectBtn.TabIndex = 1;
             InjectBtn.Text = "Inject";
@@ -156,7 +171,7 @@
             ClientList.BackColor = Color.Transparent;
             ClientList.BorderColor = Color.FromArgb(20, 20, 20);
             ClientList.BorderRadius = 6;
-            ClientList.CustomizableEdges = customizableEdges15;
+            ClientList.CustomizableEdges = customizableEdges5;
             ClientList.DrawMode = DrawMode.OwnerDrawFixed;
             ClientList.DropDownStyle = ComboBoxStyle.DropDownList;
             ClientList.FillColor = Color.FromArgb(25, 25, 25);
@@ -169,9 +184,9 @@
             ClientList.ItemsAppearance.ForeColor = Color.WhiteSmoke;
             ClientList.ItemsAppearance.SelectedBackColor = Color.FromArgb(25, 25, 25);
             ClientList.ItemsAppearance.SelectedForeColor = Color.White;
-            ClientList.Location = new Point(113, 37);
+            ClientList.Location = new Point(113, 31);
             ClientList.Name = "ClientList";
-            ClientList.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            ClientList.ShadowDecoration.CustomizableEdges = customizableEdges6;
             ClientList.Size = new Size(140, 36);
             ClientList.TabIndex = 0;
             // 
@@ -182,12 +197,12 @@
             SettingsPanel.BorderRadius = 6;
             SettingsPanel.BorderThickness = 1;
             SettingsPanel.Controls.Add(UseCustomDllBox);
-            SettingsPanel.CustomizableEdges = customizableEdges19;
+            SettingsPanel.CustomizableEdges = customizableEdges9;
             SettingsPanel.FillColor = Color.FromArgb(15, 15, 15);
             SettingsPanel.Location = new Point(123, 281);
             SettingsPanel.Name = "SettingsPanel";
             SettingsPanel.ShadowDecoration.Color = Color.MediumPurple;
-            SettingsPanel.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            SettingsPanel.ShadowDecoration.CustomizableEdges = customizableEdges10;
             SettingsPanel.Size = new Size(438, 80);
             SettingsPanel.TabIndex = 1;
             // 
@@ -236,5 +251,6 @@
         private Guna.UI2.WinForms.Guna2Button SelectDllBtn;
         private Label ClientLabel;
         private Guna.UI2.WinForms.Guna2CheckBox UseCustomDllBox;
+        private Guna.UI2.WinForms.Guna2HtmlLabel StatusLabel;
     }
 }
