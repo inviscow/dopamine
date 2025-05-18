@@ -334,6 +334,7 @@
             Name = "Panel";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Dopamine";
+            Load += Panel_Load;
             CategoryPanel.ResumeLayout(false);
             CategoryPanel.PerformLayout();
             TabsPanel.ResumeLayout(false);

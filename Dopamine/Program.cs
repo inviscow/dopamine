@@ -11,7 +11,7 @@ namespace Dopamine
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Data.StartConfigSetup();
+            Data.StartConfigSetup(); // May not be neccesary
             Application.Run(new Panel());
         }
 

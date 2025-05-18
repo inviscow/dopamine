@@ -16,6 +16,8 @@ namespace Dopamine.Tabs
 
         private async void InjectBtn_Click(object sender, EventArgs e)
         {
+            if (ClientList.SelectedIndex < 0) return;
+
             if (!UseCustomDllBox.Checked)
             {
                 var (success, response) = await Injection.GetAndInjectClient(ClientList.SelectedItem.ToString());

@@ -27,7 +27,7 @@ namespace Dopamine.Tabs
             StatusLabel.Text = "Status: <b>Randomizing data...</b>";
             var (err, resp) = await Handlers.Spoof.RandomizeData();
             StatusLabel.Text = $"Status: <b>{(err ? "Spoofing DID..." : "An error has occurred. " + resp)}</b>";
-            var (err2, didSpoofResp) = await Handlers.Spoof.SpoofDID();
+            var (err2, didSpoofResp) = await Handlers.Spoof.SpoofDID(CustomDidBox.Text);
             StatusLabel.Text = $"Status: <b>{(err2 ? "Complete! Waiting..." : "An error has occurred. " + didSpoofResp)}</b>";
             SetLabel(DidLabel, $"Spoofed DID: <b>{didSpoofResp}</b>");
         }

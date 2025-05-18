@@ -1,7 +1,6 @@
 ﻿using Dopamine.Utils;
 using DotNetConfig;
 using Memory;
-using System;
 using System.Text;
 using static Dopamine.Utils.Data;
 
