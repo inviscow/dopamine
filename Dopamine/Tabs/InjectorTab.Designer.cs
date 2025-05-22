@@ -223,6 +223,7 @@
             UseCustomDllBox.UncheckedState.BorderRadius = 4;
             UseCustomDllBox.UncheckedState.BorderThickness = 0;
             UseCustomDllBox.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
+            UseCustomDllBox.CheckedChanged += UseCustomDllBox_CheckedChanged;
             // 
             // InjectorTab
             // 

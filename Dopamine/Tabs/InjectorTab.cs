@@ -1,4 +1,5 @@
 ﻿using Dopamine.Handlers;
+using DotNetConfig;
 
 namespace Dopamine.Tabs
 {
@@ -12,6 +13,19 @@ namespace Dopamine.Tabs
             ClientList.Items.Add("Latite");
             ClientList.Items.Add("Flarial");
             ClientList.Items.Add("Onix");
+            ClientList.SelectedIndex = 0;
+            try
+            {
+                string savedDllPath = Utils.Data.GetConfig().GetString("Injector", "Dll", "CustomDllPath");
+                string savedDllName = Utils.Data.GetConfig().GetString("Injector", "Dll", "CustomDllName");
+                if (!string.IsNullOrEmpty(savedDllPath))
+                    pathToCustomDll = savedDllPath;
+                if (!string.IsNullOrEmpty(savedDllName))
+                    DllPathLabel.Text = savedDllName;
+
+                UseCustomDllBox.Checked = (bool)Utils.Data.GetConfig().GetBoolean("Injector", "Dll", "UseCustomDll");
+            }
+            catch (Exception) { }
         }
 
         private async void InjectBtn_Click(object sender, EventArgs e)
@@ -22,7 +36,8 @@ namespace Dopamine.Tabs
             {
                 var (success, response) = await Injection.GetAndInjectClient(ClientList.SelectedItem.ToString());
                 StatusLabel.Text = $"<b>Status:</b> {response}";
-            } else
+            }
+            else
             {
                 if (!string.IsNullOrEmpty(pathToCustomDll))
                 {
@@ -39,8 +54,19 @@ namespace Dopamine.Tabs
             if (FileIn.ShowDialog() == DialogResult.OK)
             {
                 DllPathLabel.Text = FileIn.SafeFileName;
-                pathToCustomDll = FileIn.FileName ;
+                pathToCustomDll = FileIn.FileName;
+                try
+                {
+                    Utils.Data.GetConfig().SetString("Injector", "Dll", "CustomDllPath", FileIn.FileName);
+                    Utils.Data.GetConfig().SetString("Injector", "Dll", "CustomDllName", FileIn.SafeFileName);
+                }
+                catch (Exception) { }
             }
+        }
+
+        private void UseCustomDllBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Utils.Data.GetConfig().SetBoolean("Injector", "Dll", "UseCustomDll", UseCustomDllBox.Checked);
         }
     }
 }

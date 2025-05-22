@@ -96,7 +96,7 @@ namespace Dopamine
                         else
                             fetchedVersion = Program.AppVersion; // Just so it doesn't show the message
                     }
-                    if (fetchedVersion.CompareTo(Program.AppVersion) > 0)
+                    if (Data.CompareVersions(fetchedVersion, Program.AppVersion))
                         MessageBox.Show($"There is an update available at https://github.com/inviscow/dopamine.\nCurrent Version: {Program.AppVersion}\nLatest Version: {fetchedVersion}", "Update Available");
                 } catch (Exception) { }
             });

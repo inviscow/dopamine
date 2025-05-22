@@ -39,6 +39,27 @@ namespace Dopamine.Utils
                 }
             }
         }
+
+        internal static bool CompareVersions(string version1, string version2)
+        {
+            var parts1 = version1.Split('.');
+            var parts2 = version2.Split('.');
+
+            int minLen = Math.Min(parts1.Length, parts2.Length);
+            for (int i = 0; i < minLen; i++)
+            {
+                if (int.Parse(parts1[i]) > int.Parse(parts2[i]))
+                    return true;
+                else if (int.Parse(parts1[i]) < int.Parse(parts2[i]))
+                    return false;
+            }
+
+            if (parts1.Length != parts2.Length)
+                return parts1.Length > parts2.Length;
+
+            // versions are equal
+            return false;
+        }
         #endregion
 
 

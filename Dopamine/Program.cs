@@ -15,6 +15,6 @@ namespace Dopamine
             Application.Run(new Panel());
         }
 
-        internal static string AppVersion = "1.0";
+        internal static string AppVersion = "1.1";
     }
 }
