@@ -26,7 +26,10 @@ namespace Dopamine.Tabs
 
         private async void InjectBtn_Click(object sender, EventArgs e)
         {
-            Data.GetConfig().SetString("Spoofer", "DID", "CustomDid", CustomDidBox.Text);
+            if (!string.IsNullOrEmpty(CustomDidBox.Text))
+                Data.GetConfig().SetString("Spoofer", "DID", "CustomDid", CustomDidBox.Text);
+            else
+                Data.GetConfig().RemoveSection("Spoofer", "DID");
             StatusLabel.Text = "Status: <b>Randomizing data...</b>";
             var (err, resp) = await Handlers.Spoof.RandomizeData();
             StatusLabel.Text = $"Status: <b>{(err ? "Spoofing DID..." : "An error has occurred. " + resp)}</b>";

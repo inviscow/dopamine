@@ -36,6 +36,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             InjectingPanel = new Guna.UI2.WinForms.Guna2Panel();
@@ -48,6 +50,7 @@
             ClientList = new Guna.UI2.WinForms.Guna2ComboBox();
             SettingsPanel = new Guna.UI2.WinForms.Guna2Panel();
             UseCustomDllBox = new Guna.UI2.WinForms.Guna2CheckBox();
+            KillMcBtn = new Guna.UI2.WinForms.Guna2Button();
             InjectingPanel.SuspendLayout();
             SettingsPanel.SuspendLayout();
             SuspendLayout();
@@ -164,6 +167,7 @@
             InjectBtn.Size = new Size(76, 36);
             InjectBtn.TabIndex = 1;
             InjectBtn.Text = "Inject";
+            InjectBtn.UseTransparentBackground = true;
             InjectBtn.Click += InjectBtn_Click;
             // 
             // ClientList
@@ -196,13 +200,14 @@
             SettingsPanel.BorderColor = Color.FromArgb(25, 25, 25);
             SettingsPanel.BorderRadius = 6;
             SettingsPanel.BorderThickness = 1;
+            SettingsPanel.Controls.Add(KillMcBtn);
             SettingsPanel.Controls.Add(UseCustomDllBox);
-            SettingsPanel.CustomizableEdges = customizableEdges9;
+            SettingsPanel.CustomizableEdges = customizableEdges11;
             SettingsPanel.FillColor = Color.FromArgb(15, 15, 15);
             SettingsPanel.Location = new Point(123, 281);
             SettingsPanel.Name = "SettingsPanel";
             SettingsPanel.ShadowDecoration.Color = Color.MediumPurple;
-            SettingsPanel.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            SettingsPanel.ShadowDecoration.CustomizableEdges = customizableEdges12;
             SettingsPanel.Size = new Size(438, 80);
             SettingsPanel.TabIndex = 1;
             // 
@@ -224,6 +229,30 @@
             UseCustomDllBox.UncheckedState.BorderThickness = 0;
             UseCustomDllBox.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
             UseCustomDllBox.CheckedChanged += UseCustomDllBox_CheckedChanged;
+            // 
+            // KillMcBtn
+            // 
+            KillMcBtn.Animated = true;
+            KillMcBtn.BorderColor = Color.FromArgb(20, 20, 20);
+            KillMcBtn.BorderRadius = 6;
+            KillMcBtn.BorderThickness = 1;
+            KillMcBtn.CustomizableEdges = customizableEdges9;
+            KillMcBtn.DisabledState.BorderColor = Color.DarkGray;
+            KillMcBtn.DisabledState.CustomBorderColor = Color.DarkGray;
+            KillMcBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            KillMcBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            KillMcBtn.FillColor = Color.FromArgb(25, 25, 25);
+            KillMcBtn.Font = new Font("Segoe UI", 9F);
+            KillMcBtn.ForeColor = Color.White;
+            KillMcBtn.Image = Properties.Resources.knife_48px;
+            KillMcBtn.Location = new Point(350, 10);
+            KillMcBtn.Name = "KillMcBtn";
+            KillMcBtn.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            KillMcBtn.Size = new Size(76, 36);
+            KillMcBtn.TabIndex = 2;
+            KillMcBtn.Text = "Kill MC";
+            KillMcBtn.UseTransparentBackground = true;
+            KillMcBtn.Click += KillMcBtn_Click;
             // 
             // InjectorTab
             // 
@@ -253,5 +282,6 @@
         private Label ClientLabel;
         private Guna.UI2.WinForms.Guna2CheckBox UseCustomDllBox;
         private Guna.UI2.WinForms.Guna2HtmlLabel StatusLabel;
+        private Guna.UI2.WinForms.Guna2Button KillMcBtn;
     }
 }

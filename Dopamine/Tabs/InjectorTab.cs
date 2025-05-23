@@ -1,5 +1,6 @@
 ﻿using Dopamine.Handlers;
 using DotNetConfig;
+using System.Diagnostics;
 
 namespace Dopamine.Tabs
 {
@@ -67,6 +68,13 @@ namespace Dopamine.Tabs
         private void UseCustomDllBox_CheckedChanged(object sender, EventArgs e)
         {
             Utils.Data.GetConfig().SetBoolean("Injector", "Dll", "UseCustomDll", UseCustomDllBox.Checked);
+        }
+
+        private void KillMcBtn_Click(object sender, EventArgs e)
+        {
+            Process[] targetProcessIndex = Process.GetProcessesByName("Minecraft.Windows");
+            foreach (Process process in targetProcessIndex)
+                process.Kill();
         }
     }
 }
