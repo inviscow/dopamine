@@ -17,14 +17,15 @@ namespace Dopamine.Tabs
             ClientList.SelectedIndex = 0;
             try
             {
-                string savedDllPath = Utils.Data.GetConfig().GetString("Injector", "Dll", "CustomDllPath");
-                string savedDllName = Utils.Data.GetConfig().GetString("Injector", "Dll", "CustomDllName");
+                string? savedDllPath = Utils.Data.GetConfig().GetString("Injector", "Dll", "CustomDllPath");
+                string? savedDllName = Utils.Data.GetConfig().GetString("Injector", "Dll", "CustomDllName");
                 if (!string.IsNullOrEmpty(savedDllPath))
                     pathToCustomDll = savedDllPath;
                 if (!string.IsNullOrEmpty(savedDllName))
                     DllPathLabel.Text = savedDllName;
 
                 UseCustomDllBox.Checked = (bool)Utils.Data.GetConfig().GetBoolean("Injector", "Dll", "UseCustomDll");
+                KillAllInstancesBox.Checked = (bool)Utils.Data.GetConfig().GetBoolean("Injector", "Dll", "KillAllInstances");
             }
             catch (Exception) { }
         }
@@ -74,7 +75,15 @@ namespace Dopamine.Tabs
         {
             Process[] targetProcessIndex = Process.GetProcessesByName("Minecraft.Windows");
             foreach (Process process in targetProcessIndex)
+            {
                 process.Kill();
+                if (!KillAllInstancesBox.Checked) return;
+            }
+        }
+
+        private void KillAllInstancesBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Utils.Data.GetConfig().SetBoolean("Injector", "Dll", "KillAllInstances", KillAllInstancesBox.Checked);
         }
     }
 }

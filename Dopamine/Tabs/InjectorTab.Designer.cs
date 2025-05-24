@@ -49,8 +49,9 @@
             InjectBtn = new Guna.UI2.WinForms.Guna2Button();
             ClientList = new Guna.UI2.WinForms.Guna2ComboBox();
             SettingsPanel = new Guna.UI2.WinForms.Guna2Panel();
-            UseCustomDllBox = new Guna.UI2.WinForms.Guna2CheckBox();
             KillMcBtn = new Guna.UI2.WinForms.Guna2Button();
+            UseCustomDllBox = new Guna.UI2.WinForms.Guna2CheckBox();
+            KillAllInstancesBox = new Guna.UI2.WinForms.Guna2CheckBox();
             InjectingPanel.SuspendLayout();
             SettingsPanel.SuspendLayout();
             SuspendLayout();
@@ -200,6 +201,7 @@
             SettingsPanel.BorderColor = Color.FromArgb(25, 25, 25);
             SettingsPanel.BorderRadius = 6;
             SettingsPanel.BorderThickness = 1;
+            SettingsPanel.Controls.Add(KillAllInstancesBox);
             SettingsPanel.Controls.Add(KillMcBtn);
             SettingsPanel.Controls.Add(UseCustomDllBox);
             SettingsPanel.CustomizableEdges = customizableEdges11;
@@ -210,25 +212,6 @@
             SettingsPanel.ShadowDecoration.CustomizableEdges = customizableEdges12;
             SettingsPanel.Size = new Size(438, 80);
             SettingsPanel.TabIndex = 1;
-            // 
-            // UseCustomDllBox
-            // 
-            UseCustomDllBox.Animated = true;
-            UseCustomDllBox.AutoSize = true;
-            UseCustomDllBox.CheckedState.BorderColor = Color.MediumPurple;
-            UseCustomDllBox.CheckedState.BorderRadius = 4;
-            UseCustomDllBox.CheckedState.BorderThickness = 0;
-            UseCustomDllBox.CheckedState.FillColor = Color.MediumPurple;
-            UseCustomDllBox.Location = new Point(10, 10);
-            UseCustomDllBox.Name = "UseCustomDllBox";
-            UseCustomDllBox.Size = new Size(113, 19);
-            UseCustomDllBox.TabIndex = 0;
-            UseCustomDllBox.Text = "Use Custom DLL";
-            UseCustomDllBox.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
-            UseCustomDllBox.UncheckedState.BorderRadius = 4;
-            UseCustomDllBox.UncheckedState.BorderThickness = 0;
-            UseCustomDllBox.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
-            UseCustomDllBox.CheckedChanged += UseCustomDllBox_CheckedChanged;
             // 
             // KillMcBtn
             // 
@@ -253,6 +236,44 @@
             KillMcBtn.Text = "Kill MC";
             KillMcBtn.UseTransparentBackground = true;
             KillMcBtn.Click += KillMcBtn_Click;
+            // 
+            // UseCustomDllBox
+            // 
+            UseCustomDllBox.Animated = true;
+            UseCustomDllBox.AutoSize = true;
+            UseCustomDllBox.CheckedState.BorderColor = Color.MediumPurple;
+            UseCustomDllBox.CheckedState.BorderRadius = 4;
+            UseCustomDllBox.CheckedState.BorderThickness = 0;
+            UseCustomDllBox.CheckedState.FillColor = Color.MediumPurple;
+            UseCustomDllBox.Location = new Point(10, 10);
+            UseCustomDllBox.Name = "UseCustomDllBox";
+            UseCustomDllBox.Size = new Size(113, 19);
+            UseCustomDllBox.TabIndex = 0;
+            UseCustomDllBox.Text = "Use Custom DLL";
+            UseCustomDllBox.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            UseCustomDllBox.UncheckedState.BorderRadius = 4;
+            UseCustomDllBox.UncheckedState.BorderThickness = 0;
+            UseCustomDllBox.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
+            UseCustomDllBox.CheckedChanged += UseCustomDllBox_CheckedChanged;
+            // 
+            // KillAllInstancesBox
+            // 
+            KillAllInstancesBox.Animated = true;
+            KillAllInstancesBox.AutoSize = true;
+            KillAllInstancesBox.CheckedState.BorderColor = Color.MediumPurple;
+            KillAllInstancesBox.CheckedState.BorderRadius = 4;
+            KillAllInstancesBox.CheckedState.BorderThickness = 0;
+            KillAllInstancesBox.CheckedState.FillColor = Color.MediumPurple;
+            KillAllInstancesBox.Location = new Point(10, 35);
+            KillAllInstancesBox.Name = "KillAllInstancesBox";
+            KillAllInstancesBox.Size = new Size(111, 19);
+            KillAllInstancesBox.TabIndex = 3;
+            KillAllInstancesBox.Text = "Kill All Instances";
+            KillAllInstancesBox.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            KillAllInstancesBox.UncheckedState.BorderRadius = 4;
+            KillAllInstancesBox.UncheckedState.BorderThickness = 0;
+            KillAllInstancesBox.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
+            KillAllInstancesBox.CheckedChanged += KillAllInstancesBox_CheckedChanged;
             // 
             // InjectorTab
             // 
@@ -283,5 +304,6 @@
         private Guna.UI2.WinForms.Guna2CheckBox UseCustomDllBox;
         private Guna.UI2.WinForms.Guna2HtmlLabel StatusLabel;
         private Guna.UI2.WinForms.Guna2Button KillMcBtn;
+        private Guna.UI2.WinForms.Guna2CheckBox KillAllInstancesBox;
     }
 }

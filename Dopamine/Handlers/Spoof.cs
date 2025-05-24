@@ -1,7 +1,9 @@
 ﻿using Dopamine.Utils;
 using DotNetConfig;
 using Memory;
+using System.IO;
 using System.Text;
+using System.Text.Json;
 using static Dopamine.Utils.Data;
 
 namespace Dopamine.Handlers
@@ -10,6 +12,23 @@ namespace Dopamine.Handlers
     {
         private static Mem mem = new Mem();
         private static List<long> didPtrs = new List<long>();
+
+        internal class TelemetryStruct
+        {
+            public int file_version { get; set; }
+            public string guard { get; set; }
+            public string lastsession_Build { get; set; }
+            public string lastsession_id { get; set; }
+            /* Example file below
+             {
+   "file_version" : 1,
+   "guard" : "f61478be-a14f-3a8f-a583-c6f9cbfbb902",
+   "lastsession_Build" : "1.21.62",
+   "lastsession_id" : "50cbeb3a-687d-44f0-856e-d583ddfec8e5"
+}
+            These have to be set to public or the code won't work
+             */
+        }
 
         internal static async Task<(bool success, string msg)> RandomizeData()
         {
@@ -26,10 +45,27 @@ namespace Dopamine.Handlers
                         if (File.Exists(cidPath))
                             File.WriteAllText(cidPath, RandomString(19, false, true));
 
+                        // Modify telemetry.json
+                        var json = File.ReadAllText(Path.Combine(Minecraft.McpeDirectory, "telemetry_info.json"));
+                        var info = JsonSerializer.Deserialize<TelemetryStruct>(json);
+
+                        info.guard = Guid.NewGuid().ToString().ToLower();
+                        info.lastsession_id = Guid.NewGuid().ToString().ToLower();
+
+                        var opts = new JsonSerializerOptions { WriteIndented = true };
+                        var outJson = JsonSerializer.Serialize(info, opts);
+                        File.WriteAllText(Path.Combine(Minecraft.McpeDirectory, "telemetry_info.json"), outJson);
+
                         string[] lines = File.ReadAllLines(Minecraft.OptionsFile);
                         for (int i = 0; i < lines.Length; i++)
                         {
                             if (lines[i].StartsWith("mp_username"))
+                            {
+                                string[] parts = lines[i].Split(':');
+                                parts[1] = RandomString(RandomInt(4, 10));
+                                lines[i] = string.Join(":", parts);
+                            }
+                            if (lines[i].StartsWith("mp_prev_app_name"))
                             {
                                 string[] parts = lines[i].Split(':');
                                 parts[1] = RandomString(RandomInt(4, 10));
@@ -57,6 +93,18 @@ namespace Dopamine.Handlers
                             {
                                 string[] parts = lines[i].Split(':');
                                 parts[1] = RandomString();
+                                lines[i] = string.Join(":", parts);
+                            }
+                            if (lines[i].StartsWith("app_launched_count"))
+                            {
+                                string[] parts = lines[i].Split(':');
+                                parts[1] = RandomInt(1, 1738).ToString();
+                                lines[i] = string.Join(":", parts);
+                            }
+                            if (lines[i].StartsWith("device_lost_telemetry_enabled"))
+                            {
+                                string[] parts = lines[i].Split(':');
+                                parts[1] = "0";
                                 lines[i] = string.Join(":", parts);
                                 break;
                             }

@@ -94,7 +94,7 @@ namespace Dopamine
                         if (versionUrl.StatusCode != System.Net.HttpStatusCode.NotFound) // NotFound = Repo is private or not available
                             fetchedVersion = await versionUrl.Content.ReadAsStringAsync();
                         else
-                            fetchedVersion = Program.AppVersion; // Just so it doesn't show the message
+                            fetchedVersion = Program.AppVersion; // Just so it doesn't show the update message
                     }
                     if (Data.CompareVersions(fetchedVersion, Program.AppVersion))
                         MessageBox.Show($"There is an update available at https://github.com/inviscow/dopamine.\nCurrent Version: {Program.AppVersion}\nLatest Version: {fetchedVersion}", "Update Available");

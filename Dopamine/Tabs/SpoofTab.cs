@@ -16,6 +16,7 @@ namespace Dopamine.Tabs
         private async void SpoofTab_Load(object sender, EventArgs e)
         {
             CustomDidBox.Text = Data.GetConfig().GetString("Spoofer", "DID", "CustomDid");
+
             SetLabel(DidLabel, $"Original DID: <b>{await Minecraft.GetDIDFromFile()}</b>");
             SetLabel(McidLabel, $"MCID: <b>N/A</b>");
             SetLabel(CidLabel, $"CID: <b>{await Minecraft.GetCIDFromFile()}</b>");
@@ -30,6 +31,7 @@ namespace Dopamine.Tabs
                 Data.GetConfig().SetString("Spoofer", "DID", "CustomDid", CustomDidBox.Text);
             else
                 Data.GetConfig().RemoveSection("Spoofer", "DID");
+
             StatusLabel.Text = "Status: <b>Randomizing data...</b>";
             var (err, resp) = await Handlers.Spoof.RandomizeData();
             StatusLabel.Text = $"Status: <b>{(err ? "Spoofing DID..." : "An error has occurred. " + resp)}</b>";
